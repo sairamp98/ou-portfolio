@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Sri Sairam Pothuri - Web Strategist and Developer with 6+ years of experience.">
+    <title>Sri Sairam Pothuri | Web Strategist & Developer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Rubik:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* OU BRAND PALETTE 
+           Source: ou.edu/brand
+        */
+        :root {
+            --ou-crimson: #841617;
+            --ou-cream: #fdf9d8;
+            --ou-dark-gray: #323232;
+            --ou-black: #000000;
+            --ou-white: #ffffff;
+            --focus-outline: 3px solid #000000;
+            --border-radius: 4px;
+        }
+
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--ou-dark-gray);
+            background-color: #f9f9f9;
+        }
+
+        /* ACCESSIBILITY: SKIP LINK */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background: var(--ou-crimson);
+            color: white;
+            padding: 10px 15px;
+            z-index: 999;
+            text-decoration: none;
+            font-weight: bold;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 10px;
+            outline: var(--focus-outline);
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-family: 'Rubik', sans-serif;
+            color: var(--ou-crimson);
+            margin-bottom: 0.5em;
+        }
+
+        h1 { font-size: 2.5rem; line-height: 1.2; color: var(--ou-white); }
+        h2 { 
+            font-size: 2rem; 
+            border-bottom: 2px solid var(--ou-crimson); 
+            padding-bottom: 10px; 
+            margin-bottom: 30px;
+        }
+        h3 { font-size: 1.5rem; color: var(--ou-black); margin-bottom: 5px; }
+
+        p { margin-bottom: 1em; }
+        ul { margin-bottom: 1em; margin-left: 1.5em; }
+        li { margin-bottom: 0.5em; }
+
+        /* LAYOUT UTILS */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--ou-crimson);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            transition: background 0.3s;
+        }
+
+        nav a:hover, nav a:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            text-decoration: underline;
+            outline: 2px solid white;
+        }
+
+        /* HERO / ABOUT SECTION */
+        #about {
+            background-color: var(--ou-dark-gray);
+            color: white;
+            padding: 80px 0;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            color: #e0e0e0;
+        }
+
+        #about h2 {
+            border-bottom: none;
+            color: var(--ou-cream);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            background-color: var(--ou-cream);
+            color: var(--ou-black);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            border: 2px solid var(--ou-cream);
+            transition: all 0.3s;
+        }
+
+        .btn:hover, .btn:focus {
+            background-color: transparent;
+            color: var(--ou-cream);
+            text-decoration: none;
+            outline: var(--focus-outline);
+            outline-color: white;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 0;
+        }
+
+        /* SKILLS GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-left: 5px solid var(--ou-crimson);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: var(--border-radius);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            color: var(--ou-crimson);
+        }
+
+        /* EXPERIENCE CARDS */
+        .job-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .role {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--ou-dark-gray);
+        }
+
+        .company {
+            color: var(--ou-crimson);
+            font-weight: 700;
+        }
+
+        .date {
+            font-style: italic;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* EDUCATION */
+        .edu-card {
+            background: white;
+            padding: 20px;
+            border-left: 5px solid var(--ou-crimson);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* CONTACT */
+        #contact {
+            background-color: var(--ou-cream);
+            text-align: center;
+        }
+        
+        #contact h2 {
+            border-bottom: 2px solid var(--ou-black);
+            display: inline-block;
+            color: var(--ou-black);
+        }
+
+        .contact-links a {
+            color: var(--ou-crimson);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: underline;
+            margin: 0 10px;
+        }
+        
+        .contact-links a:hover, .contact-links a:focus {
+            background-color: var(--ou-crimson);
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--ou-black);
+            color: #888;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .job-header {
+                flex-direction: column;
+            }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="container">
+            <nav role="navigation" aria-label="Main Navigation">
+                <div class="logo">Sri Sairam Pothuri</div>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        
+        <section id="about" aria-labelledby="about-heading">
+            <div class="container">
+                <h1 id="about-heading">Web Strategist & Developer</h1>
+                <h2>Professional Summary</h2>
+                <p>
+                    Web Strategist and Developer with over 6 years of experience driving digital transformation. 
+                    Proven track record of optimizing digital ecosystems within <strong>higher education</strong> and enterprise environments. 
+                    Specialized in <strong>Content Management Systems (CMS)</strong>, <strong>Web Accessibility (WCAG)</strong>, and analytics-driven strategy. 
+                    Expert in bridging the gap between technical development (HTML/CSS/JS) and institutional goals to deliver accessible, on-brand, and high-performance web solutions.
+                </p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </section>
+
+        <section id="skills" aria-labelledby="skills-heading">
+            <div class="container">
+                <h2 id="skills-heading">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Web Strategy & CMS</h3>
+                        <p>Adobe Experience Manager (AEM), WordPress, Canvas, Moodle, iEvolve Learner (LMS), SEO Principles, WCAG 2.1 Compliance.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Front-End Development</h3>
+                        <p>HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Web Design, Cross-Browser Compatibility.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Data & Analytics</h3>
+                        <p>Google Analytics (GA4), Power BI, Python (Automation), SQL, User Metrics Analysis.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Tools & Platforms</h3>
+                        <p>Git, Jira, Microsoft Office Suite, SharePoint, VS Code.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" aria-labelledby="exp-heading">
+            <div class="container">
+                <h2 id="exp-heading">Relevant Experience</h2>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="role">Software Development Intern (Full Stack & UI/UX)</span>
+                            <span class="company"> | Paycom (Dallas, TX)</span>
+                        </div>
+                        <span class="date">May 2025 – Aug 2025</span>
+                    </div>
+                    <ul>
+                        <li><strong>Front-End Engineering:</strong> Built the "Template Management Module" using <strong>React</strong>, focusing on <strong>CSS styling</strong> and <strong>JavaScript</strong> logic to enable dynamic content creation. Ensured the interface was intuitive for non-technical users to manage templates independently.</li>
+                        <li><strong>Cross-Functional Collaboration:</strong> Collaborated with design and product teams to implement the internal "Project Tracker," enhancing SDLC visibility and facilitating communication between technical and non-technical stakeholders.</li>
+                        <li><strong>Quality Assurance:</strong> Implemented reusable UI components and wrote unit tests to ensure API reliability and maintain a seamless user experience across different devices and browsers.</li>
+                    </ul>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="role">Graduate Research Assistant (Web Analytics & Development)</span>
+                            <span class="company"> | OU Center for Public Management</span>
+                        </div>
+                        <span class="date">May 2024 – May 2025</span>
+                    </div>
+                    <ul>
+                        <li><strong>Web Analytics & SEO Strategy:</strong> Managed the Monthly Usage Report for <strong>Google Analytics (GA4)</strong>. Automated the extraction of metrics using Python to analyze web traffic trends and provide actionable insights on content visibility.</li>
+                        <li><strong>CMS Automation:</strong> Diagnosed and fixed critical <strong>JavaScript</strong> bugs in a <strong>WordPress</strong> automated entry system. Corrected field mapping logic that transferred candidate data from Excel to the CMS, restoring <strong>100% data accuracy</strong> and eliminating manual corrections.</li>
+                        <li><strong>CMS Customization:</strong> Enhanced the <strong>Moodle (LMS)</strong> platform by developing custom features using PHP and MySQL. Improved user search functionality and course completion tracking, directly impacting user retention.</li>
+                    </ul>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="role">Graduate Research Assistant (Web Strategy)</span>
+                            <span class="company"> | OU Office of Digital Learning</span>
+                        </div>
+                        <span class="date">Sep 2023 – May 2024</span>
+                    </div>
+                    <ul>
+                        <li><strong>CMS Standardization & Branding:</strong> Led a strategic initiative to refactor code for model courses in <strong>Canvas</strong> using <strong>HTML, CSS, and JavaScript</strong>. Aligned 100% of course content with <strong>OU’s brand guidelines</strong>, ensuring a professional visual identity across departments.</li>
+                        <li><strong>User Experience (UX) & Accessibility:</strong> Audited and optimized web content to meet <strong>WCAG 2.1 accessibility standards</strong>, ensuring compliance and improving usability for diverse groups including students and faculty.</li>
+                        <li><strong>Data-Driven Decision Making:</strong> Collaborated with the marketing team to build a <strong>Power BI dashboard</strong> that tracked course development. Used these metrics to improve project visibility by <strong>25%</strong> and facilitate resource allocation decisions.</li>
+                    </ul>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="role">System Engineer (Web Strategy & CMS Development)</span>
+                            <span class="company"> | Tata Consultancy Services (Hyderabad)</span>
+                        </div>
+                        <span class="date">June 2019 – Aug 2023</span>
+                    </div>
+                    <ul>
+                        <li><strong>Enterprise CMS Management:</strong> Managed web content within TCS's proprietary <strong>iEvolve Learner</strong> platform and <strong>Adobe Experience Manager (AEM)</strong>. Structured content hierarchies and templates to streamline digital publishing workflows for enterprise clients.</li>
+                        <li><strong>Accessibility & SEO Implementation:</strong> Led front-end development of responsive interfaces using <strong>React</strong> and <strong>HTML/CSS</strong>, ensuring all web assets strictly adhered to <strong>WCAG guidelines</strong> and <strong>SEO best practices</strong> to maximize inclusivity.</li>
+                        <li><strong>Strategic Process Improvement:</strong> Analyzed web operational data using <strong>SQL</strong> to identify bottlenecks. Implemented Python-based automation strategies that reduced manual intervention, improving the team's ability to meet tight deadlines.</li>
+                        <li><strong>Stakeholder Collaboration:</strong> Acted as a technical liaison between business units and development teams. Translated complex marketing requirements into functional web deliverables.</li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="education" aria-labelledby="edu-heading">
+            <div class="container">
+                <h2 id="edu-heading">Education</h2>
+                <div class="edu-card">
+                    <h3>Master of Science in Computer Science</h3>
+                    <p class="role">University of Oklahoma, Norman, OK | GPA: 3.9/4.0</p>
+                    <p class="date">Aug 2025</p>
+                </div>
+                <div class="edu-card">
+                    <h3>Bachelor of Technology in Computer Science</h3>
+                    <p class="role">Geethanjali College of Engineering and Technology, India | GPA: 4.0/4.0</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading">Contact Me</h2>
+                <p>I am ready to bring my "Day One" readiness to the OU Marketing & Communications team.</p>
+                <div class="contact-links">
+                    <a href="mailto:sairampothuri8121@gmail.com">sairampothuri8121@gmail.com</a>
+                    <a href="mailto:sri.sairam.pothuri-1@ou.edu">sri.sairam.pothuri-1@ou.edu</a>
+                    <a href="tel:4057888770">405-788-8770</a>
+                    <a href="https://linkedin.com/in/sri-sairam-pothuri" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sri Sairam Pothuri. Built with semantic HTML & accessible CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
